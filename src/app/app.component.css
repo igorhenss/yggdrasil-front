@@ -1,0 +1,51 @@
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:host ::ng-deep .p-organizationchart .p-organizationchart-node-header,
+:host ::ng-deep .p-organizationchart .p-organizationchart-node-content {
+  padding: 12px 24px;
+}
+
+:host ::ng-deep .p-organizationchart .p-organizationchart-node-header {
+  background-color: #495ebb;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-organizationchart .p-organizationchart-node-content {
+  text-align: center;
+  border: 1px solid #495ebb;
+}
+
+:host ::ng-deep .p-organizationchart .p-organizationchart-node-content:hover {
+  filter: brightness(125%);
+  cursor: pointer;
+}
+
+:host ::ng-deep .p-organizationchart .p-organizationchart-node-content {
+  text-align: center;
+  border: 0px solid #b0c2d6;
+  text-align: center;
+  border: none !important;
+  border-radius: 2px !important;
+}
+
+:host ::ng-deep .p-organizationchart .marketplace {
+  background-color: #7247bc;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-organizationchart .origin-category {
+  background-color: #a534b6;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-organizationchart .destiny-category {
+  background-color: #e9286f;
+  color: #ffffff;
+}

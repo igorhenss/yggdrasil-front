@@ -1,0 +1,26 @@
+<div class="content" role="main">
+
+  <div class="card flex justify-content-center overflow-x-auto">
+    <p-organizationChart [value]="data">
+      <ng-template let-node pTemplate="marketplace">
+        <div class="p-2 text-center">
+          <strong>{{ node.label }}</strong>
+        </div>
+      </ng-template>
+
+      <ng-template let-node pTemplate="originCategory">
+        <div class="p-2 text-center">
+          <strong>{{ node.label }}</strong>
+        </div>
+      </ng-template>
+
+      <ng-template let-node pTemplate="destinyCategory">
+        <div class="p-2 text-center">
+          <strong>{{ node.label }}</strong>
+          <div>{{node.data.bindCountPercentage}}% of all binds</div>
+        </div>
+      </ng-template>
+    </p-organizationChart>
+  </div>
+
+</div>
