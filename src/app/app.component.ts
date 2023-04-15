@@ -14,84 +14,42 @@ import { TreeNode } from 'primeng/api';
 })
 export class AppComponent {
 
-  constructor(private http: HttpClient) { }
-
   title = 'yggdrasil-front';
 
-  data: TreeNode[] = [
-    {
-      label: 'AMAZON',
-      type: 'marketplace',
-      styleClass: 'bg-indigo-500 text-white marketplace',
-      expanded: true,
-      children: [
-        {
-          label: 'MLB001',
-          type: 'originCategory',
-          styleClass: 'bg-purple-500 text-white origin-category',
-          expanded: true,
-          children: [
-            {
-              label: '101',
-              type: 'destinyCategory',
-              styleClass: 'bg-teal-500 text-white destiny-category',
-              data: {
-                'bindCount': 3,
-                'totalBindCount': 10,
-                'bindCountPercentage': 30
-              }
-            },
-            {
-              label: '102',
-              type: 'destinyCategory',
-              styleClass: 'bg-teal-500 text-white destiny-category',
-              data: {
-                'bindCount': 2,
-                'totalBindCount': 10,
-                'bindCountPercentage': 20
-              }
-            },
-            {
-              label: '103',
-              type: 'destinyCategory',
-              styleClass: 'bg-teal-500 text-white destiny-category',
-              data: {
-                'bindCount': 5,
-                'totalBindCount': 10,
-                'bindCountPercentage': 50
-              }
-            }
-          ]
-        },
-        {
-          label: 'MLB002',
-          type: 'originCategory',
-          styleClass: 'bg-purple-500 text-white origin-category',
-          expanded: true,
-          children: [
-            {
-              label: 'Toys-productType-eletronic',
-              type: 'destinyCategory',
-              styleClass: 'bg-teal-500 text-white destiny-category',
-              data: {
-                'bindCount': 9725,
-                'totalBindCount': 10000,
-                'bindCountPercentage': 97.25
-              }
-            },
-            {
-              label: 'Toys-productType-plushie',
-              type: 'destinyCategory',
-              styleClass: 'bg-teal-500 text-white destiny-category',
-              data: {
-                'bindCount': 275,
-                'totalBindCount': 10000,
-                'bindCountPercentage': 2.75
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ];
+  data: TreeNode[] = [];
+
+  constructor(private http: HttpClient) {
+    this.http.get<any[]>('http://localhost:9339/yggdrasil/complete-tree')
+      .subscribe(result => {
+        this.data = result.map(marketplaceNode => {
+          return {
+            label: marketplaceNode.marketplace,
+            type: 'marketplace',
+            styleClass: 'bg-indigo-300 text-white marketplace',
+            expanded: true,
+            children: marketplaceNode.nodes.map(originCategoryNode => {
+              return {
+                label: originCategoryNode.originCategory,
+                type: 'originCategory',
+                styleClass: 'bg-purple-300 text-white origin-category',
+                expanded: true,
+                children: originCategoryNode.leafs.map(destinyCategoryNode => {
+                  return {
+                  label: destinyCategoryNode.destinyCategory,
+                    type: 'destinyCategory',
+                    styleClass: 'bg-blue-300 text-white destiny-category',
+                    data: {
+                      bindCount: destinyCategoryNode.bindCount,
+                      totalBindCount: destinyCategoryNode.totalBindCount,
+                      bindCountPercentage: destinyCategoryNode.bindCountPercentage
+                    }
+                  }
+                })
+              };
+            })
+          };
+        });
+      });
+  }
+
 }

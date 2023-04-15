@@ -12,16 +12,6 @@
   padding: 12px 24px;
 }
 
-:host ::ng-deep .p-organizationchart .p-organizationchart-node-header {
-  background-color: #495ebb;
-  color: #ffffff;
-}
-
-:host ::ng-deep .p-organizationchart .p-organizationchart-node-content {
-  text-align: center;
-  border: 1px solid #495ebb;
-}
-
 :host ::ng-deep .p-organizationchart .p-organizationchart-node-content:hover {
   filter: brightness(125%);
   cursor: pointer;
@@ -36,16 +26,16 @@
 }
 
 :host ::ng-deep .p-organizationchart .marketplace {
-  background-color: #7247bc;
+  background-color: var(--indigo-400);
   color: #ffffff;
 }
 
 :host ::ng-deep .p-organizationchart .origin-category {
-  background-color: #a534b6;
+  background-color: var(--blue-400);
   color: #ffffff;
 }
 
 :host ::ng-deep .p-organizationchart .destiny-category {
-  background-color: #e9286f;
+  background-color: var(--bluegray-400);
   color: #ffffff;
 }
