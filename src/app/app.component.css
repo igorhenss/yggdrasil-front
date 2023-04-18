@@ -25,17 +25,32 @@
   border-radius: 2px !important;
 }
 
+:host ::ng-deep .p-organizationchart {
+  color: #FFF;
+}
+
+:host ::ng-deep .p-organizationchart .rooty {
+  background-color: var(--blue-600);
+}
+
 :host ::ng-deep .p-organizationchart .marketplace {
-  background-color: var(--indigo-400);
-  color: #ffffff;
+  background-color: var(--blue-500);
 }
 
 :host ::ng-deep .p-organizationchart .origin-category {
   background-color: var(--blue-400);
-  color: #ffffff;
 }
 
 :host ::ng-deep .p-organizationchart .destiny-category {
-  background-color: var(--bluegray-400);
-  color: #ffffff;
+  background-color: var(--blue-300);
+  color: #000;
+}
+
+:host ::ng-deep .p-disabled,
+:host ::ng-deep .p-component:disabled {
+  opacity: 0.75;
+}
+
+.wide-width {
+  width: max-content;
 }

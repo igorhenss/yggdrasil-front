@@ -1,22 +1,48 @@
 <div class="content" role="main">
 
   <div class="card flex justify-content-center overflow-x-auto">
+    <span class="p-buttonset">
+      <button pButton type="button" class="p-button-raised" [disabled]="isLoading || showTreeByMarketplace"
+        label="Árvore por Marketplaces"
+        icon="pi pi-shopping-cart"
+        loadingIcon="pi pi-spinner pi-spin"
+        [loading]="isLoading"
+        (click)="showCategoryTreeByMarketplace()"
+      ></button>
+    
+      <button pButton type="button" class="p-button-raised" [disabled]="isLoading || showTreeByCategory"
+        label="Árvore por Categorias"
+        icon="pi pi-inbox"
+        loadingIcon="pi pi-spinner pi-spin"
+        [loading]="isLoading"
+        (click)="showCategoryTreeByCategory()"
+      ></button>
+    </span>
+
     <p-organizationChart [value]="data">
+      <ng-template let-node pTemplate="rooty">
+        <div class="text-center wide-width">
+          <strong>{{ node.label }}</strong>
+        </div>
+      </ng-template>
+      
       <ng-template let-node pTemplate="marketplace">
-        <div class="p-2 text-center">
+        <div class="text-center wide-width">
           <strong>{{ node.label }}</strong>
         </div>
       </ng-template>
 
       <ng-template let-node pTemplate="originCategory">
-        <div class="p-2 text-center">
+        <div class="text-center wide-width">
           <strong>{{ node.label }}</strong>
         </div>
       </ng-template>
 
       <ng-template let-node pTemplate="destinyCategory">
-        <div class="p-2 text-center">
+        <div class="text-center wide-width">
           <strong>{{ node.label }}</strong>
+          <br/>&nbsp;
+          <!-- <p-divider/> -->
           <div>{{node.data.bindCountPercentage}}% of all binds</div>
         </div>
       </ng-template>

@@ -1,7 +1,9 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { PanelModule } from 'primeng/panel';
 
@@ -15,8 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ButtonModule,
     FormsModule,
     OrganizationChartModule,
+    DividerModule,
     PanelModule,
     HttpClientModule
   ],
